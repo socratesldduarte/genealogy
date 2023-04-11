@@ -82,7 +82,8 @@ return [
     |
     */
 
-    'locale' => 'en',
+//    'locale' => 'en',
+    'locale' => request()->getPreferredLanguage(request()->getLanguages()),
 
     /*
     |--------------------------------------------------------------------------

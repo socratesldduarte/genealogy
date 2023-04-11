@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+//dd(request()->getPreferredLanguage(request()->getLanguages()));
+//dd(request()->getLanguages());
+
     return view('welcome');
 });
 
