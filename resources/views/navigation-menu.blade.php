@@ -12,9 +12,35 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                    @auth()
+
+                        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('navigation.dashboard') }}
+                        </x-nav-link>
+
+                        <x-nav-link href="{{ route('myfamily') }}" :active="request()->routeIs('myfamily')">
+                            {{ __('navigation.myfamily') }}
+                        </x-nav-link>
+
+                        @can('Families view any')
+                        <x-nav-link href="{{ route('families.index') }}" :active="request()->routeIs(route('families.index'))">
+                            {{ __('Famílias') }}
+                        </x-nav-link>
+                        @endcan
+
+                        @can('Families view')
+                            <?php
+                                foreach(auth()->user()->families as $family) {
+                            ?>
+                            <x-nav-link href="{{ route('families.show', ['family' => $family]) }}" :active="request()->routeIs(route('families.show', ['family' => $family]))">
+                                {{ $family->name }}
+                            </x-nav-link>
+                            <?php
+                                }
+                            ?>
+                        @endcan
+
+                    @endauth
                 </div>
             </div>
 
@@ -140,7 +166,10 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('navigation.dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                {{ __('navigation.dashboard') }}
             </x-responsive-nav-link>
         </div>
 

@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
          ]);
 
          $this->call(PermissionSeeder::class);
+         $this->call(FamilySeeder::class);
+         $this->call(PersonSeeder::class);
     }
 }

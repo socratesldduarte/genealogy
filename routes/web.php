@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{WelcomeController, Dashboard, FamilyController, PersonController};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,20 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-//dd(request()->getPreferredLanguage(request()->getLanguages()));
-//dd(request()->getLanguages());
-
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('/myfamily', [FamilyController::class, 'myfamily'])->name('myfamily');
+    Route::get('/myfamily/{person}', [FamilyController::class, 'person'])->name('person');
+    Route::resource('families', FamilyController::class);
+    Route::resource('people', PersonController::class);
+//    Route::get('/dashboard', function () {
+//        return view('dashboard');
+//    })->name('dashboard');
 });
+
+Route::get('/{family}', [WelcomeController::class, 'index']);

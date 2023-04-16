@@ -82,8 +82,8 @@ return [
     |
     */
 
-//    'locale' => 'en',
-    'locale' => request()->getPreferredLanguage(request()->getLanguages()),
+    'locale' => 'pt_BR',
+//    'locale' => request()->getPreferredLanguage(request()->getLanguages()),
 
     /*
     |--------------------------------------------------------------------------
