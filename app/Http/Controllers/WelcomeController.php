@@ -24,6 +24,13 @@ class WelcomeController extends Controller
                         session(['family_name' => $family->name]);
                     }
                 }
+            } else {
+                $familySearch = Family::find(1);
+                if ($familySearch) {
+                    $family = $familySearch;
+                    session(['family' => $family->id]);
+                    session(['family_name' => $family->name]);
+                }
             }
         } else {
             $familySearch = Family::find(session('family'));

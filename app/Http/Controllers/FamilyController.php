@@ -82,7 +82,7 @@ class FamilyController extends Controller
     public function myfamily()
     {
         $family = $this->family->find(session('family'));
-        $this->authorize('view', $family);
+//        $this->authorize('view', $family);
 
         $person = $family->people()->inRandomOrder()->firstOrFail();
 
@@ -95,7 +95,7 @@ class FamilyController extends Controller
     public function person(Request $request, Person $person)
     {
         $family = $person->family;
-        $this->authorize('view', $family);
+//        $this->authorize('view', $family);
 
         return view('families.person', compact(['family', 'person']));
     }

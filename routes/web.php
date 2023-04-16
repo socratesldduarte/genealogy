@@ -15,6 +15,8 @@ use App\Http\Controllers\{WelcomeController, Dashboard, FamilyController, Person
 */
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/myfamily', [FamilyController::class, 'myfamily'])->name('myfamily');
+Route::get('/myfamily/{person}', [FamilyController::class, 'person'])->name('person');
 
 Route::middleware([
     'auth:sanctum',
@@ -22,8 +24,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
-    Route::get('/myfamily', [FamilyController::class, 'myfamily'])->name('myfamily');
-    Route::get('/myfamily/{person}', [FamilyController::class, 'person'])->name('person');
     Route::resource('families', FamilyController::class);
     Route::resource('people', PersonController::class);
 //    Route::get('/dashboard', function () {
