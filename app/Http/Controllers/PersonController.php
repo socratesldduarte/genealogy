@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
+use App\Models\Family;
 use App\Models\Person;
 
 class PersonController extends Controller
@@ -45,7 +46,10 @@ class PersonController extends Controller
      */
     public function edit(Person $person)
     {
-        //
+        $family = Family::find(session('family'));
+        $this->authorize('update', $person);
+
+        return view('admin.person.edit', compact(['family', 'person']));
     }
 
     /**
@@ -53,7 +57,10 @@ class PersonController extends Controller
      */
     public function update(UpdatePersonRequest $request, Person $person)
     {
-        //
+        $this->authorize('update', $person);
+        $person->update($request->all());
+
+        return redirect(route('person', ['person' => $person]));
     }
 
     /**

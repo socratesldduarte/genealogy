@@ -100,9 +100,9 @@
                                 </div>
                                 <p class="mt-1 truncate text-sm text-gray-500">@if($person->nick_name){{$person->nick_name}}@endif</p>
                                 @can('Families update')
-                                    <div class="flex items-center space-x-3">
-                                        <a href="{{route('people.update', ['person' => $person])}}">
-                                            <span class="inline-block flex-shrink-0 rounded-full py-0.5 text-xs font-medium">[EDITAR]</span>
+                                    <div class="flex space-x-3">
+                                        <a href="{{route('people.edit', ['person' => $person])}}" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                            <span class="text-xs font-medium">EDITAR</span>
                                         </a>
                                     </div>
                                 @endif

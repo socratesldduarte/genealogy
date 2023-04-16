@@ -37,7 +37,7 @@ class PersonPolicy
      */
     public function update(User $user, Person $person): bool
     {
-        //
+        return $user->can('Families update');
     }
 
     /**

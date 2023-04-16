@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePersonRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdatePersonRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->user()->can('Families update');
     }
 
     /**
@@ -22,7 +23,8 @@ class UpdatePersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'gender' => ['required', 'string', Rule::in(['male', 'female'])],
+            'name' => 'required|string',
         ];
     }
 }
