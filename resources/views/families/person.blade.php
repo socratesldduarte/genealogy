@@ -13,9 +13,10 @@
             <?php
                 //CHECKING PARENTS
                 $countParents = count($person->parents);
+                $cols = $countParents;
                 if ($countParents > 0) {
             ?>
-            <ul role="list" class="pb-4 grid grid-cols-{{$countParents}} gap-6 sm:grid-cols-{{$countParents}} lg:grid-cols-{{$countParents}} items-center justify-center justify-items-center">
+            <ul role="list" class="pb-4 grid @if($cols == 6) grid-cols-6 @else @if($cols == 5) grid-cols-5 @else @if($cols == 4) grid-cols-4 @else @if($cols == 3) grid-cols-3 @else @if($cols == 2) grid-cols-2 @else grid-cols-1 @endif @endif @endif @endif @endif gap-1 items-center justify-center justify-items-center">
                 @foreach($person->parents as $parent)
                 <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-blue-50 shadow items-center justify-center justify-items-center">
                     <a href="{{route('person', ['person' => $parent])}}">
@@ -87,7 +88,7 @@
             }
             ?>
             <div class="pb-4 grid grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-1 items-center justify-center justify-items-center">
-                <ul role="list" class="grid grid-cols-{{$cols}} gap-6 items-center justify-center justify-items-center">
+                <ul role="list" class="pb-4 grid @if($cols == 6) grid-cols-6 @else @if($cols == 5) grid-cols-5 @else @if($cols == 4) grid-cols-4 @else @if($cols == 3) grid-cols-3 @else @if($cols == 2) grid-cols-2 @else grid-cols-1 @endif @endif @endif @endif @endif gap-1 items-center justify-center justify-items-center">
                     <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-green-50 shadow">
                         <div class="flex w-full items-center justify-between space-x-6 px-6 py-1">
                             <div class="flex-1 truncate">
@@ -154,7 +155,7 @@
             $limit = 5;
             ?>
             <div class="pb-4 grid grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-1 items-center justify-center justify-items-center">
-                <ul role="list" class="grid grid-cols-{{$cols}} gap-1 items-center justify-center justify-items-center">
+                <ul role="list" class="pb-4 grid @if($cols == 6) grid-cols-6 @else @if($cols == 5) grid-cols-5 @else @if($cols == 4) grid-cols-4 @else @if($cols == 3) grid-cols-3 @else @if($cols == 2) grid-cols-2 @else grid-cols-1 @endif @endif @endif @endif @endif gap-1 items-center justify-center justify-items-center">
             @foreach($person->children as $child)
             <?php
                 $intCount++;

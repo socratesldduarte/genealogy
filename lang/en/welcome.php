@@ -37,5 +37,5 @@ return [
     ],
 
     'made' => 'Made with love',
-    'owner' => 'Socrates Duarte'
+    'owner' => 'Socrates Duarte & Ana Paula Fernandes'
 ];

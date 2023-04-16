@@ -37,6 +37,6 @@ return [
     ],
 
     'made' => 'Feito com amor',
-    'owner' => 'Sócrates Duarte'
+    'owner' => 'Sócrates Duarte & Ana Paula Fernandes'
 
 ];
