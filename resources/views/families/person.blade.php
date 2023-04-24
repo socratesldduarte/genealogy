@@ -21,6 +21,8 @@
 
         </h1>
 
+        <div class="flex flex-col">
+
         @if($person->birth_day)
             <div class="flex flex-row font-bold text-2xl items-center truncate">
 
@@ -48,7 +50,7 @@
                 {{$person->death_day->format('d/m/Y')}}
             </div>
         @endif
-
+        </div>
     </x-slot>
 
 
